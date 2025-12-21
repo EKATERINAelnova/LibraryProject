@@ -1,0 +1,134 @@
+﻿<UserControl x:Class="LibraryProject.View.Pages.DiagramsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:charts="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+      xmlns:winForms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+      Loaded="UserControl_Loaded">
+
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="LabelStyle">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style TargetType="ComboBox" x:Key="ComboStyle">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="#FDE5D3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <Border Grid.Row="0" Background="#73937E" Padding="10" Margin="0,0,0,10">
+            <TextBlock Text="Статистика библиотеки" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       Foreground="White"
+                       HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Панель управления -->
+        <Border Grid.Row="1" 
+                Background="White" 
+                CornerRadius="10" 
+                Margin="20,0,20,20" 
+                Padding="15"
+                BorderBrush="#73937E" 
+                BorderThickness="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Тип статистики:" 
+                           Style="{StaticResource LabelStyle}"
+                           Width="120"/>
+
+                <ComboBox x:Name="StatTypeComboBox" 
+                          Style="{StaticResource ComboStyle}"
+                          SelectionChanged="StatTypeComboBox_SelectionChanged">
+                    <ComboBoxItem Content="Статистика работников" Tag="Workers"/>
+                    <ComboBoxItem Content="Статистика читателей" Tag="Readers"/>
+                    
+                </ComboBox>
+
+                <TextBlock Text="Тип диаграммы:" 
+                           Style="{StaticResource LabelStyle}"
+                           Width="120" 
+                           Margin="20,0,0,0"/>
+
+                <ComboBox x:Name="ChartTypeComboBox" 
+                          Style="{StaticResource ComboStyle}"
+                          SelectionChanged="ChartTypeComboBox_SelectionChanged"/>
+
+                <Button x:Name="BackButton" 
+                        Content="Назад" 
+                        Width="100" 
+                        Height="30"
+                        Margin="20,0,0,0"
+                        Style="{StaticResource SquareButtonStyle}"
+                        Click="BackButton_Click"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Контейнер для графика -->
+        <Border Grid.Row="2" 
+                Margin="20" 
+                Background="White" 
+                CornerRadius="10"
+                BorderBrush="#73937E" 
+                BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- График -->
+                <WindowsFormsHost Grid.Row="0" Margin="10">
+                    <charts:Chart x:Name="MainChart">
+                        <charts:Chart.ChartAreas>
+                            <charts:ChartArea Name="MainArea">
+                                <charts:ChartArea.AxisX>
+                                    <charts:Axis Title="Показатель">
+                                        <charts:Axis.LabelStyle>
+                                            <charts:LabelStyle Angle="-45"/>
+                                        </charts:Axis.LabelStyle>
+                                    </charts:Axis>
+                                </charts:ChartArea.AxisX>
+                                <charts:ChartArea.AxisY>
+                                    <charts:Axis Title="Количество"/>
+                                </charts:ChartArea.AxisY>
+                            </charts:ChartArea>
+                        </charts:Chart.ChartAreas>
+                        <charts:Chart.Legends>
+                            <charts:Legend Name="MainLegend" 
+                                          Docking="Top"
+                                          Alignment="Center"/>
+                        </charts:Chart.Legends>
+                    </charts:Chart>
+                </WindowsFormsHost>
+
+                <!-- Легенда статистики -->
+                <StackPanel Grid.Row="1" 
+                            Orientation="Horizontal" 
+                            HorizontalAlignment="Center"
+                            Margin="0,10,0,20">
+                    <Border Background="#73937E" 
+                            CornerRadius="5" 
+                            Padding="10">
+                        <TextBlock x:Name="StatsSummaryText" 
+                                   Foreground="White"
+                                   FontSize="12"
+                                   TextAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,35 @@
+﻿<Page x:Class="LibraryProject.View.Pages.RegisterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="RegisterPage">
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="/View/Pages/аунтификация.png"/>
+        </Grid.Background>
+        <Border Margin="20" BorderBrush="#73937E" BorderThickness="2"  Background="#FDE5D3" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10">
+            <StackPanel Margin="20">
+                <TextBlock  Style="{StaticResource HText}" Text="Регистрация" TextAlignment="Center"/>
+
+                <TextBlock Style="{StaticResource BaseText}" Text="Логин"/>
+                <TextBox x:Name="LoginTextBox" Style="{StaticResource FlatTextBoxStyle}"/>
+
+                <TextBlock Style="{StaticResource BaseText}" Text="Email" />
+                <TextBox x:Name="EmailTextBox" Style="{StaticResource FlatTextBoxStyle}"/>
+
+             <TextBlock Style="{StaticResource BaseText}" Text="Пароль"/>
+                <PasswordBox x:Name="PasswordBox" Style="{StaticResource FlatPasswordBoxStyle}" Background="#FDE5D3"/>
+
+            <TextBlock Style="{StaticResource BaseText}" Text="Подтвердите пароль"/>
+                <PasswordBox x:Name="ConfirmPasswordBox" Style="{StaticResource FlatPasswordBoxStyle}"  Background="#FDE5D3"/>
+                
+                <TextBlock Style="{StaticResource BaseText}" Text="Адрес" />
+                <TextBox x:Name="AddressTextBox" Style="{StaticResource FlatTextBoxStyle}"/>
+                <TextBlock Style="{StaticResource BaseText}" Text="Телефон" />
+                <TextBox x:Name="PhoneTextBox" Style="{StaticResource FlatTextBoxStyle}"/>
+                <Button Style="{StaticResource NiceRoundedButton}" Content="Зарегистрироваться" Click="RegisterButton_Click"/>
+
+                <Button Content="Уже зарегистрирован" Click="BackButton_Click" Style="{StaticResource NoHighlightButton}"/>
+            </StackPanel>
+            </Border>
+    </Grid>
+</Page>

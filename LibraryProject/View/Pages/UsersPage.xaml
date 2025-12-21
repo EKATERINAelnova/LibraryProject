@@ -1,0 +1,46 @@
+﻿<Page x:Class="LibraryProject.View.Pages.UsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="UsersPage">
+
+    <Grid Margin="10" Background="#FDE5D3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Button x:Name="BackButton" Margin="0 0 10 0" Style="{StaticResource SquareButtonStyle}" Click="Back_Click" Content="Назад"></Button>
+            <TextBlock Style="{StaticResource BaseText}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Фильтр по роли: " Margin="0,0,5,0"/>
+            <ComboBox Margin="0 15" x:Name="RoleFilterComboBox" Width="150" SelectionChanged="RoleFilterComboBox_SelectionChanged">
+                <ComboBoxItem Content="Все" IsSelected="True"/>
+                <ComboBoxItem Content="Admin"/>
+                <ComboBoxItem Content="Worker"/>
+                <ComboBoxItem Content="Reader"/>
+            </ComboBox>
+            
+            <Button x:Name="AddWorkerButton" Content="Добавить" Width="100" Style="{StaticResource SquareButtonStyle}" Margin="10,0,0,0" Click="AddWorkerButton_Click"/>
+            <Button x:Name="EditWorkerButton" Content="Редактировать" Width="100" Style="{StaticResource SquareButtonStyle}" Margin="5,0,0,0" Click="EditWorkerButton_Click" />
+            <Button x:Name="DeleteWorkerButton" Content="Удалить" Width="100" Style="{StaticResource SquareButtonStyle}" Margin="5,0,0,0" Click="DeleteWorkerButton_Click" />
+            
+            <Button x:Name="DiagramButton" Margin="5,0,0,0" Width="100" Style="{StaticResource SquareButtonStyle}" Click="Diagram_Click" Content="Статистика"></Button>
+        </StackPanel>
+
+        <DataGrid Background="#FDE5D3" x:Name="UsersDataGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" Style="{StaticResource ModernDataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding UserId}" Width="Auto"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Login}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                <DataGridTextColumn Header="Роль" Binding="{Binding Role}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+            <Button Content="Пред." Style="{StaticResource NiceRoundedButton}" Click="PrevPage_Click" Margin="5"/>
+            <TextBlock x:Name="PageInfoText" VerticalAlignment="Center" Margin="5"/>
+            <Button Content="След." Style="{StaticResource NiceRoundedButton}" Click="NextPage_Click" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Page>

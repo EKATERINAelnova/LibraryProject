@@ -1,0 +1,48 @@
+﻿<Page x:Class="LibraryProject.View.Pages.CRUDCopyBook.EditCopyPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="EditCopyPage">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/View/Pages/аунтификация.png"/>
+        </Grid.Background>
+        <Border Margin="20" BorderBrush="#73937E" BorderThickness="2"  Background="#FDE5D3" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10">
+            <StackPanel Margin="20" >
+
+                <TextBlock  Style="{StaticResource HText}" Text="Редактирование экземпляра"
+                       FontSize="20" Margin="0 0 0 20" />
+
+                <TextBlock  Style="{StaticResource BaseText}" Text="Год издания" />
+                <TextBox Style="{StaticResource FlatTextBoxStyle}" x:Name="YearBox" />
+
+                <TextBlock  Style="{StaticResource BaseText}" Text="Раздел" Margin="0 10 0 0"/>
+                <ComboBox x:Name="SectionBox" />
+
+                <TextBlock  Style="{StaticResource BaseText}" Text="Издательство" Margin="0 10 0 0"/>
+                <ComboBox x:Name="PublisherBox" />
+
+                <TextBlock  Style="{StaticResource BaseText}" Text="Статус" Margin="0 10 0 0"/>
+                <ComboBox x:Name="StatusBox" />
+
+                <TextBlock  Style="{StaticResource BaseText}" Text="Шкаф" Margin="0 10 0 0"/>
+                <TextBox Style="{StaticResource FlatTextBoxStyle}" x:Name="ClosetBox" />
+
+                <TextBlock  Style="{StaticResource BaseText}" Text="Полка" Margin="0 10 0 0"/>
+                <TextBox Style="{StaticResource FlatTextBoxStyle}" x:Name="ShelfBox" />
+
+                <TextBlock  Style="{StaticResource BaseText}" Text="Место" Margin="0 10 0 0"/>
+                <TextBox Style="{StaticResource FlatTextBoxStyle}" x:Name="PlaceBox" />
+
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Center">
+                    <Button Content="Сохранить" Click="Save_Click"
+                        Style="{StaticResource NiceRoundedButton}"
+                        Width="100" Margin="10 0"/>
+                    <Button Content="Назад" Click="Back_Click"
+                        Width="100" Margin="10 0" Background="Gray" Style="{StaticResource NiceRoundedButton}"/>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,287 @@
+﻿<Application x:Class="LibraryProject.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="View/MainWindow.xaml">
+    <Application.Resources>
+        <Style x:Key="FlatPasswordBoxStyle" TargetType="PasswordBox">
+            <Setter Property="Background" Value="#FDE5D3"/>
+            <Setter Property="Foreground" Value="#824D53"/>
+            <Setter Property="BorderBrush" Value="#824D53"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            <Setter Property="CaretBrush" Value="#824D53"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border x:Name="Border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+
+                            <!-- ВАЖНО: именно PART_ContentHost -->
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                  Margin="{TemplateBinding Padding}"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <!-- Фокус -->
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="Border"
+                                Property="BorderBrush"
+                                Value="#B6763B"/>
+                            </Trigger>
+
+                            <!-- Отключено -->
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Border"
+                                Property="Opacity"
+                                Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+        <Style x:Key="FlatTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="#FDE5D3"/>
+            <Setter Property="Foreground" Value="#824D53"/>
+            <Setter Property="BorderBrush" Value="#824D53"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            <Setter Property="CaretBrush" Value="#824D53"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Фокус -->
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter
+                                    Property="BorderBrush"
+                                    Value="#B6763B"/>
+                            </Trigger>
+
+                            <!-- Отключено -->
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter
+                                Property="Opacity"
+                                Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="NoHighlightButton" TargetType="Button">
+            <Setter Property="Background" Value="#00824D53"/>
+            <Setter Property="Foreground" Value="#FF694244"/>
+            <Setter Property="BorderBrush" Value="#00707070"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="NiceRoundedButton">
+            <!-- Базовые свойства -->
+            <Setter Property="Background" Value="#824D53"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="10 10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="200"/>
+            <!-- на 5 шире текста -->
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+
+            <!-- Анимации и внешний вид -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="12"
+                            SnapsToDevicePixels="True">
+
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          RecognizesAccessKey="True" />
+                        </Border>
+
+                        <!-- Триггеры (hover и нажатие) -->
+                        <ControlTemplate.Triggers>
+
+                            <!-- Наведение -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FF694244"/>
+                            </Trigger>
+
+                            <!-- Нажатие -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FF694244"/>
+                            </Trigger>
+
+                            <!-- Выключена -->
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Opacity" Value="0.5"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="BaseText">
+            <Setter Property="Foreground" Value="#303633"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="HText">
+            <Setter Property="Foreground" Value="#B6763B"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            <Setter Property="FontSize" Value="24"/>
+
+        </Style>
+
+        <Style x:Key="ModernDataGridStyle" TargetType="DataGrid">
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="BorderBrush" Value="#824D53"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="GridLinesVisibility" Value="None"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="AlternatingRowBackground" Value="#FDE5D3"/>
+            <Setter Property="RowBackground" Value="#FDE5D3"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            <Setter Property="Margin" Value="10"/>
+
+            <!-- Заголовки -->
+            <Setter Property="ColumnHeaderStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="#824D53"/>
+                        <Setter Property="Foreground" Value="#FDE5D3"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Padding" Value="10 6"/>
+                        <Setter Property="BorderBrush" Value="#694244"/>
+                        <Setter Property="BorderThickness" Value="0 0 1 1"/>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <!-- Строки -->
+            <Setter Property="RowStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Background" Value="#FDE5D3"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FDE5D1"/>
+                            </Trigger>
+
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#824D53"/>
+                                <Setter Property="BorderBrush" Value="#694244"/>
+                                <Setter Property="Foreground" Value="#FDE5D3"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <!-- Ячейки -->
+            <Setter Property="CellStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="8 4"/>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style x:Key="SquareButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="#FDE5D3"/>
+            <Setter Property="BorderBrush" Value="#824D53"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#694244"/>
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="4"  
+                        >
+                            <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- Hover -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#824D53"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#694244"/>
+                                <Setter Property="Foreground" Value="#FDE5D3"/>
+                            </Trigger>
+
+                            <!-- Pressed -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#B6763B"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#694244"/>
+                                <Setter Property="Foreground" Value="#FDE5D3"/>
+                            </Trigger>
+
+                            <!-- Disabled -->
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="#B6763B"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#694244"/>
+                                <Setter Property="Foreground" Value="#FDE5D3"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Application.Resources>
+</Application>

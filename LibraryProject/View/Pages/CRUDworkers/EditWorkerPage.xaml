@@ -1,0 +1,59 @@
+﻿<Page x:Class="LibraryProject.View.Pages.CRUDworkers.EditWorkerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibraryProject.View.Pages.CRUDworkers"
+      mc:Ignorable="d"
+      Title="EditWorkerPage">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/View/Pages/аунтификация.png"/>
+        </Grid.Background>
+        <Border Margin="20" BorderBrush="#73937E" BorderThickness="2"  Background="#FDE5D3" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10">
+            <StackPanel Margin="20">
+
+                <TextBlock Style="{StaticResource HText}" Text="Редактирование сотрудника" FontSize="24" Margin="0 0 0 15"/>
+
+                <TextBlock Style="{StaticResource BaseText}" Text="Логин:"/>
+                <TextBox Style="{StaticResource FlatTextBoxStyle}" x:Name="LoginTextBox" Margin="0 5"/>
+
+                <TextBlock Style="{StaticResource BaseText}" Text="Email:"/>
+                <TextBox Style="{StaticResource FlatTextBoxStyle}" x:Name="EmailTextBox" Margin="0 5"/>
+
+                <TextBlock Style="{StaticResource BaseText}" Text="ФИО:"/>
+                <TextBox Style="{StaticResource FlatTextBoxStyle}" x:Name="FullNameTextBox" Margin="0 5"/>
+
+                <TextBlock Style="{StaticResource BaseText}" Text="Телефон (+79995556677):"/>
+                <TextBox Style="{StaticResource FlatTextBoxStyle}" x:Name="PhoneTextBox" Margin="0 5"/>
+
+                <TextBlock Style="{StaticResource BaseText}" Text="Адрес:"/>
+                <TextBox Style="{StaticResource FlatTextBoxStyle}" x:Name="AddressTextBox" Margin="0 5"/>
+
+                <TextBlock Style="{StaticResource BaseText}" Text="Паспорт (11 символов):"/>
+                <TextBox Style="{StaticResource FlatTextBoxStyle}" x:Name="PassportTextBox" Margin="0 5"/>
+
+                <TextBlock Style="{StaticResource BaseText}" Text="ИНН (10 символов):"/>
+                <TextBox Style="{StaticResource FlatTextBoxStyle}" x:Name="InnTextBox" Margin="0 5"/>
+
+                <TextBlock Style="{StaticResource BaseText}" Text="Пол:"/>
+                <ComboBox x:Name="GenderComboBox" Margin="0 5">
+                    <ComboBoxItem Content="М"/>
+                    <ComboBoxItem Content="Ж"/>
+                </ComboBox>
+
+                <TextBlock Style="{StaticResource BaseText}" Text="Должность:"/>
+                <TextBox Style="{StaticResource FlatTextBoxStyle}" x:Name="PositionTextBox" Margin="0 5"/>
+
+                <TextBlock Style="{StaticResource BaseText}" Text="Зарплата:"/>
+                <TextBox Style="{StaticResource FlatTextBoxStyle}" x:Name="SalaryTextBox" Margin="0 5"/>
+
+                <Button Style="{StaticResource NiceRoundedButton}" Content="Сохранить сотрудника" Margin="0 15 0 0" Width="200" Click="AddWorker_Click"/>
+
+                <Button Style="{StaticResource NiceRoundedButton}" Content="Назад" Width="120" Click="Back_Click" Margin="0 10 0 0"/>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
