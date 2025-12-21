@@ -1,7 +1,7 @@
 ## desktop wpf-app
 
 **folder LibraryProject** - project  \
-- **folder Models**
+> - **folder Models**
 - **folder View**
 - **folder Services**  \  \
 **folder LibraryProjectTests** - unit-tests  \
